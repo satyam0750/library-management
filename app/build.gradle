@@ -1,0 +1,67 @@
+plugins {
+    alias(libs.plugins.android.application)
+    id 'com.google.gms.google-services'
+}
+
+android {
+    namespace 'com.example.librarymanagement'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.example.librarymanagement"
+        minSdk 26
+        targetSdk 35
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+}
+
+dependencies {
+    // Firebase BoM (Bill of Materials)
+    implementation platform('com.google.firebase:firebase-bom:33.1.0')
+
+    // Firebase की सर्विसेस जो हमें चाहिए
+    implementation 'com.google.firebase:firebase-auth'      // लॉगिन के लिए
+    implementation 'com.google.firebase:firebase-firestore' // डेटाबेस के लिए
+    implementation 'com.google.firebase:firebase-database'  // Realtime Database के लिए
+    implementation 'com.google.firebase:firebase-storage'   // फोटो/PDF के लिए
+
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.constraintlayout
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+    implementation 'com.airbnb.android:lottie:6.7.1'
+    
+    // CameraX and ML Kit for Barcode Scanning
+    implementation libs.camera.core
+    implementation libs.camera.camera2
+    implementation libs.camera.lifecycle
+    implementation libs.camera.view
+    implementation libs.mlkit.barcode.scanning
+
+    // QR Code Generation
+    implementation 'com.google.zxing:core:3.5.4'
+    implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
+
+    // Excel Support (Apache POI)
+    implementation libs.poi.ooxml
+
+    // Glide for Image Loading
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
+}

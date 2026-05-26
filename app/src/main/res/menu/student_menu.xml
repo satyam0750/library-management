@@ -1,0 +1,33 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_dashboard"
+        android:title="Dashboard"
+        android:icon="@drawable/ic_dashboard"/>
+
+    <item
+        android:id="@+id/menu_books"
+        android:title="Available Books"
+        android:icon="@drawable/ic_books"/>
+
+    <item
+        android:icon="@drawable/ic_request"
+        android:id="@+id/menu_request"
+        android:title="Request Book"/>
+
+    <item
+        android:id="@+id/menu_issued"
+        android:title="My Issued Books"
+        android:icon="@drawable/ic_issue"/>
+
+    <item
+        android:id="@+id/menu_profile"
+        android:title="My Profile"
+        android:icon="@drawable/ic_profile"/>
+
+    <item
+        android:id="@+id/menu_logout"
+        android:title="Logout"
+        android:icon="@drawable/ic_logout"/>
+
+</menu>

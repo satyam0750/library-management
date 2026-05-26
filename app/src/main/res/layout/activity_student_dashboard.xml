@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF2E6"
+    android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_above="@id/bottomNav">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="#004D40"
+                app:title="Student Portal"
+                app:titleTextColor="@android:color/white"
+                app:navigationIconTint="@android:color/white"/>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingBottom="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ViewFlipper
+                        android:id="@+id/headerFlipper"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autoStart="true"
+                        android:flipInterval="4000"
+                        android:inAnimation="@android:anim/slide_in_left"
+                        android:outAnimation="@android:anim/slide_out_right">
+
+                        <!-- Slide 1: Welcome with Background Image -->
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="140dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/bg_library"/>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="140dp"
+                                android:background="#B3004D40" />
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="140dp"
+                                android:orientation="vertical"
+                                android:gravity="center_vertical"
+                                android:padding="24dp">
+                                <TextView
+                                    android:id="@+id/tvWelcome"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Welcome Back,"
+                                    android:textColor="#B2DFDB"
+                                    android:textSize="14sp" />
+                                <TextView
+                                    android:id="@+id/tvStudentName"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="John Doe"
+                                    android:textColor="@android:color/white"
+                                    android:textSize="22sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </FrameLayout>
+
+                        <!-- Slide 2: Tip with Background Image -->
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="140dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/lib_image1"/>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="140dp"
+                                android:background="#B300695C" />
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="140dp"
+                                android:orientation="vertical"
+                                android:gravity="center_vertical"
+                                android:padding="24dp">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Library Tip:"
+                                    android:textColor="#B2DFDB"
+                                    android:textSize="14sp" />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Renew your books 2 days before the due date to avoid fines!"
+                                    android:textColor="@android:color/white"
+                                    android:textSize="16sp"
+                                    android:textStyle="italic" />
+                            </LinearLayout>
+                        </FrameLayout>
+
+                    </ViewFlipper>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Recommended for You"
+                        android:paddingLeft="16dp"
+                        android:paddingTop="16dp"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:textColor="#333333"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerRecommendations"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/item_recommended_book" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Main Actions"
+                        android:paddingLeft="16dp"
+                        android:paddingTop="16dp"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:textColor="#333333"/>
+
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:columnCount="3"
+                        android:padding="8dp">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/cardBooks"
+                            android:layout_width="0dp"
+                            android:layout_height="130dp"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="6dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="2dp"
+                            app:cardBackgroundColor="@android:color/white"
+                            android:clickable="true"
+                            android:focusable="true">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="8dp">
+                                <com.google.android.material.card.MaterialCardView
+                                    android:layout_width="56dp"
+                                    android:layout_height="56dp"
+                                    app:cardCornerRadius="28dp"
+                                    app:cardElevation="0dp"
+                                    app:cardBackgroundColor="#E3F2FD">
+                                    <ImageView
+                                        android:layout_width="32dp"
+                                        android:layout_height="32dp"
+                                        android:layout_gravity="center"
+                                        android:src="@android:drawable/ic_menu_agenda"
+                                        app:tint="#1976D2"/>
+                                </com.google.android.material.card.MaterialCardView>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="Books"
+                                    android:textColor="#333333"
+                                    android:textSize="12sp"
+                                    android:gravity="center"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/cardRequest"
+                            android:layout_width="0dp"
+                            android:layout_height="130dp"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="6dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="2dp"
+                            app:cardBackgroundColor="@android:color/white"
+                            android:clickable="true"
+                            android:focusable="true">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="8dp">
+                                <com.google.android.material.card.MaterialCardView
+                                    android:layout_width="56dp"
+                                    android:layout_height="56dp"
+                                    app:cardCornerRadius="28dp"
+                                    app:cardElevation="0dp"
+                                    app:cardBackgroundColor="#E0F2F1">
+                                    <ImageView
+                                        android:layout_width="32dp"
+                                        android:layout_height="32dp"
+                                        android:layout_gravity="center"
+                                        android:src="@android:drawable/ic_menu_send"
+                                        app:tint="#00796B"/>
+                                </com.google.android.material.card.MaterialCardView>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="Request"
+                                    android:textColor="#333333"
+                                    android:textSize="12sp"
+                                    android:gravity="center"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/cardIssued"
+                            android:layout_width="0dp"
+                            android:layout_height="130dp"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="6dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="2dp"
+                            app:cardBackgroundColor="@android:color/white"
+                            android:clickable="true"
+                            android:focusable="true">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="8dp">
+                                <com.google.android.material.card.MaterialCardView
+                                    android:layout_width="56dp"
+                                    android:layout_height="56dp"
+                                    app:cardCornerRadius="28dp"
+                                    app:cardElevation="0dp"
+                                    app:cardBackgroundColor="#FFF3E0">
+                                    <ImageView
+                                        android:layout_width="32dp"
+                                        android:layout_height="32dp"
+                                        android:layout_gravity="center"
+                                        android:src="@android:drawable/ic_menu_edit"
+                                        app:tint="#F57C00"/>
+                                </com.google.android.material.card.MaterialCardView>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="My Books"
+                                    android:textColor="#333333"
+                                    android:textSize="12sp"
+                                    android:gravity="center"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/cardLeaderboard"
+                            android:layout_width="0dp"
+                            android:layout_height="130dp"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="6dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="2dp"
+                            app:cardBackgroundColor="@android:color/white"
+                            android:clickable="true"
+                            android:focusable="true">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="8dp">
+                                <com.google.android.material.card.MaterialCardView
+                                    android:layout_width="56dp"
+                                    android:layout_height="56dp"
+                                    app:cardCornerRadius="28dp"
+                                    app:cardElevation="0dp"
+                                    app:cardBackgroundColor="#FFFDE7">
+                                    <ImageView
+                                        android:layout_width="32dp"
+                                        android:layout_height="32dp"
+                                        android:layout_gravity="center"
+                                        android:src="@android:drawable/btn_star_big_on"
+                                        app:tint="#FBC02D"/>
+                                </com.google.android.material.card.MaterialCardView>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="Leaderboard"
+                                    android:textColor="#333333"
+                                    android:textSize="12sp"
+                                    android:gravity="center"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/cardProfile"
+                            android:layout_width="0dp"
+                            android:layout_height="130dp"
+                            android:layout_columnWeight="1"
+                            android:layout_margin="6dp"
+                            app:cardCornerRadius="12dp"
+                            app:cardElevation="2dp"
+                            app:cardBackgroundColor="@android:color/white"
+                            android:clickable="true"
+                            android:focusable="true">
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="8dp">
+                                <com.google.android.material.card.MaterialCardView
+                                    android:layout_width="56dp"
+                                    android:layout_height="56dp"
+                                    app:cardCornerRadius="28dp"
+                                    app:cardElevation="0dp"
+                                    app:cardBackgroundColor="#FCE4EC">
+                                    <ImageView
+                                        android:layout_width="32dp"
+                                        android:layout_height="32dp"
+                                        android:layout_gravity="center"
+                                        android:src="@android:drawable/ic_menu_myplaces"
+                                        app:tint="#C2185B"/>
+                                </com.google.android.material.card.MaterialCardView>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="Profile"
+                                    android:textColor="#333333"
+                                    android:textSize="12sp"
+                                    android:gravity="center"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </GridLayout>
+
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#004D40"
+            app:labelVisibilityMode="labeled"
+            app:itemIconTint="@android:color/white"
+            app:itemTextColor="@android:color/white"
+            app:menu="@menu/student_bottom_menu" />
+
+    </RelativeLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/student_menu" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

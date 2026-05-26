@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">SmartLibrary Manager</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- Dashboard Strings -->
+    <string name="recommended_for_you">Recommended for You</string>
+    <string name="main_actions">Main Actions</string>
+    <string name="browse_books">Browse Books</string>
+    <string name="request_book">Request Book</string>
+    <string name="my_books">My Books</string>
+    <string name="profile">Profile</string>
+    <string name="leaderboard">Leaderboard</string>
+
+    <string name="welcome_admin">Welcome, Admin</string>
+    <string name="welcome_staff">Welcome, Staff</string>
+    <string name="admin_portal">Administrator Portal,</string>
+    <string name="staff_portal">Staff Portal,</string>
+
+    <!-- Profile & QR -->
+    <string name="digital_id">Digital Student ID</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="total_fine">Total Fine: ₹%1$.2f</string>
+
+    <!-- Leaderboard -->
+    <string name="reading_leaderboard">Reading Leaderboard</string>
+    <string name="top_readers_month">Top Readers of the Month</string>
+    <string name="books_read_count">%1$d Books Read</string>
+
+    <string-array name="book_categories">
+        <item>Select Category</item>
+        <item>Computer Science</item>
+        <item>Mathematics</item>
+        <item>Physics</item>
+        <item>History</item>
+        <item>Fiction</item>
+        <item>Biography</item>
+        <item>Science</item>
+        <item>Other</item>
+    </string-array>
+</resources>
